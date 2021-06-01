@@ -1,0 +1,33 @@
+.movieContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.input-icons {
+  position: relative;
+}
+.input-icons i {
+  font-size: 1.2rem;
+  color: #ccc;
+  position: absolute;
+  top: 20%;
+  right: 05%;
+  padding: 0.1rem 0;
+}
+
+.input-field {
+  padding: 0.6rem 0.8rem;
+  border: none;
+  border-radius: 10px;
+  width: 250px;
+  outline: none;
+}
+
+.title {
+  font-size: 3rem;
+  letter-spacing: 3px;
+  font-weight: 100;
+  /* text-transform: capitalize; */
+}

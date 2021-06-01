@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import axios from "axios";
+import Header from "./Components/Header/Header";
+import Movies from "./Components/MoviesList/Movies";
 
-function App() {
+const App = () => {
+  const [movies, setMovies] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
+
+  const fetchMovies = async () => {
+    try {
+      const response = await axios.get(
+        `http://www.omdbapi.com/?s=batman&apikey=${process.env.REACT_APP_MOVIE_KEY}`
+      );
+      const data = response.data.Search;
+      console.log(data);
+      setMovies(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchMovies();
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Header />
+      <Movies movies={movies} />
     </div>
   );
-}
+};
 
 export default App;
